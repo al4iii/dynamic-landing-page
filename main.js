@@ -40,11 +40,16 @@ function setBgGreet() {
   }
 };
 
-// Get Name
-function getName() {
-  localStorage.getItem('name') === null ?
-    name.textContent = '[Enter Name]':  
-    name.textContent = localStorage.getItem('name')  
+function getNameFocus() {
+  if (localStorage.getItem('name') === null){
+    name.textContent = '[Enter Name]';
+  } else {
+    name.textContent = localStorage.getItem('name');
+  } if (localStorage.getItem ('focus') === null) {
+    focus.textContent = '[Enter Focus]';
+  } else {
+    focus.textContent = localStorage.getItem('focus');
+  } 
 };
 
 // Set Name
@@ -52,41 +57,24 @@ function setName(e) {
   if (e.type === 'keypress') {
     // Make sure enter is pressed
     if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('name', e.target.innerText);
-      name.blur();
+      localStorage.setItem(e.target.id, e.target.innerText);
+      if (e.target.id === name) {
+        name.blur();
+      } else {
+        focus.blur();
+      }
     }
   } else {
-    localStorage.setItem('name', e.target.innerText);
-  }
-};
-
-// Get Focus
-function getFocus() {
-  localStorage.getItem('focus') === null ?
-    focus.textContent = '[Enter Focus]': 
-    focus.textContent = localStorage.getItem('focus')
-  };
-
-// Set Focus
-function setFocus(e) {
-  if (e.type === 'keypress') {
-    // Make sure enter is pressed
-    if (e.which == 13 || e.keyCode == 13) {
-      localStorage.setItem('focus', e.target.innerText);
-      focus.blur();
-    }
-  } else {
-    localStorage.setItem('focus', e.target.innerText);
+    localStorage.setItem(e.target.id, e.target.innerText);
   }
 };
 
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
-focus.addEventListener('keypress', setFocus);
-focus.addEventListener('blur', setFocus);
+focus.addEventListener('keypress', setName);
+focus.addEventListener('blur', setName);
 
 // Run
 showTime();
 setBgGreet();
-getName();
-getFocus();
+getNameFocus();
