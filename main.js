@@ -8,13 +8,12 @@ const showAmPm = true;
 // Show Time
 function showTime() {
   const today = new Date();
-  let  hour = today.getHours();
-  let  min = today.getMinutes();
-  let  sec = today.getSeconds();  
+  let hour = today.getHours();
+  let min = today.getMinutes();
+  let sec = today.getSeconds();  
   const timeFormat = hour >= 12 ? 'PM' : 'AM'; // Set AM or PM  
   hour = hour % 12 || 12; // 12hr Format  
-  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)}  
-    ${showAmPm ? timeFormat : ''}`; // Output Time
+  time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(sec)} ${showAmPm ? timeFormat : ''}`; // Output Time
   setTimeout(showTime, 1000);
 };
 
@@ -58,7 +57,6 @@ function setName(e) {
     }
   }
 };
-
 
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
