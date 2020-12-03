@@ -18,12 +18,10 @@ function showTime() {
 };
 
 // Add Zeros
-function addZero(n) {
-  return (parseInt(n, 10) < 10 ? '0' : '') + n;
-};
+let addZero = (n) => (parseInt(n, 10) < 10 ? '0' : '') + n;
 
 // Set Background and Greeting
-function setBgGreet() {
+let setBgGreet = () => {
   let today = new Date();
   let hour = today.getHours();
    if (hour < 12) {   
@@ -39,13 +37,13 @@ function setBgGreet() {
   }
 };
 
-function getNameFocus() { 
+let getNameFocus = () => { 
   name.textContent = localStorage.getItem('name') ? localStorage.getItem('name') :'[Enter Name]';
   focus.textContent = localStorage.getItem ('focus') ? localStorage.getItem ('focus') : '[Enter Focus]'; 
 };
 
 // Set Name
-function setName(e) {
+let setName = (e) => {
   localStorage.setItem(e.target.id, e.target.innerText);
   if (e.type === 'keypress') {
     if (e.which == 13 || e.keyCode == 13) {
