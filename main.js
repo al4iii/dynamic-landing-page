@@ -45,15 +45,9 @@ let getNameFocus = () => {
 // Set Name
 let setName = (e) => {
   localStorage.setItem(e.target.id, e.target.innerText);
-  if (e.type === 'keypress') {
-    if (e.which == 13 || e.keyCode == 13) {
-      if (e.target.id === name) {
-        name.blur();
-      } else {
-        focus.blur();
-      }
-    }
-  }
+  if (e.which == 13 || e.keyCode == 13) {
+    e.target.id === name ? name.blur() : focus.blur();        
+  }  
 };
 
 name.addEventListener('keypress', setName);
